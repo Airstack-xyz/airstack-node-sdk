@@ -1,8 +1,7 @@
-import { createCacheKey } from '../cache';
 import { config } from '../config';
 import { AIRSTACK_ENDPOINT } from '../constants';
 import { Variables } from '../types';
-import  fetch  from './fetch';
+import fetch from './fetch';
 
 export async function _fetch<ResponseType = any>(
   query: string,
@@ -15,8 +14,8 @@ export async function _fetch<ResponseType = any>(
     const res = await fetch(AIRSTACK_ENDPOINT, {
       method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": config.authKey,
+        'Content-Type': 'application/json',
+        Authorization: config.authKey,
       },
       body: JSON.stringify({
         query,
@@ -37,17 +36,10 @@ export async function _fetch<ResponseType = any>(
     ];
   }
 }
-const promiseCache: { [key: string]: Promise<any> } = {};
 
 export async function fetchGql<ResponseType = any>(
   query: string,
   variables: Variables
 ): Promise<[ResponseType | null, any]> {
-  const key = createCacheKey(query, variables);
-  if (!promiseCache[key]) {
-    promiseCache[key] = _fetch<ResponseType>(query, variables).finally(() => {
-      delete promiseCache[key];
-    });
-  }
-  return promiseCache[key];
+  return _fetch<ResponseType>(query, variables);
 }

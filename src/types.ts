@@ -20,8 +20,4 @@ export type FetchQuery = {
   getPrevPage: () => Promise<FetchQuery | null>;
 };
 
-export type Config = {
-  cache?: boolean;
-};
-
 export type Variables = Record<string, any>;
