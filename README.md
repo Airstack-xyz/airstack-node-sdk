@@ -45,7 +45,7 @@ To use the SDK you will need airstack api-key, which you can find in your profil
 ##### Example
 
 ```typescript
-import { fetchQuery } from "./fetchQuery";
+import { fetchQuery } from "@airstack/node";
 
 const { data, error } = await fetchQuery(query, variables);
 ```
@@ -69,7 +69,7 @@ It returns a promise with an object, which contains the following properties:
 ##### Example
 
 ```typescript
-import { fetchQueryWithPagination } from "./fetchQueryWithPagination";
+import { fetchQueryWithPagination } from "@airstack/node";
 
 const { data, error, hasNextPage, hasPrevPage, getNextPage, getPrevPage } =
   await fetchQueryWithPagination(query, variables);

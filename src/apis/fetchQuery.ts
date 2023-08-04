@@ -4,7 +4,7 @@ import { stringifyObjectValues } from '../utils/stringifyObjectValues';
 
 export async function fetchQuery(
   query: string,
-  variables?: Variables,
+  variables?: Variables
 ): Promise<Pick<FetchQuery, 'data' | 'error'>> {
   const _variables: Variables = stringifyObjectValues(variables || {});
 
