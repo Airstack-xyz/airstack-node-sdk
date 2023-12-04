@@ -30,6 +30,12 @@ To use the SDK you will need airstack api-key, which you can find in your profil
 
 **`init` must be called before calling fetchQuery or  fetchQueryWithPagination**.
 
+```typescript
+import { init } from "@airstack/node";
+
+init("api-key");
+```
+
 ## fetchQuery
 
 ##### Parameters
